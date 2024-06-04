@@ -1,1 +1,1 @@
-# thehangmangame
+# TheHangmanGame
