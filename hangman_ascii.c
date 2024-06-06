@@ -2,8 +2,8 @@
 
 // Define the hangman ASCII art
 char *hangman_ascii[] = {
-    "\n\n\n\n\n\n\n=====",
-    "\n\n    |\n    |\n    |\n    |\n    |\n=====",
+    "\n     \n     \n     \n     \n     \n     \n=====",
+    "\n     \n    |\n    |\n    |\n    |\n    |\n=====",
     "\n +--+\n    |\n    |\n    |\n    |\n    |\n=====",
     "\n +--+\n |  |\n    |\n    |\n    |\n    |\n=====",
     "\n +--+\n |  |\n O  |\n    |\n    |\n    |\n=====",
@@ -24,17 +24,11 @@ void print_hangman(int index) {
 }
 
 int main() {
-    // Test the function
-    print_hangman(0);
-    print_hangman(1);
-    print_hangman(2);
-    print_hangman(3);
-    print_hangman(4);
-    print_hangman(5);
-    print_hangman(6);
-    print_hangman(7);
-    print_hangman(8);
-    print_hangman(9);
-    print_hangman(10);  // This will print "Invalid index"
+    int id = 0;
+    while (id < 10) {
+        print_hangman(id);
+        id++;
+    }
+
     return 0;
 }
