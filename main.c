@@ -5,7 +5,7 @@ typedef struct {
     char letter;
     int found;
     int lives;
-} Game;
+} hangman;
 
 void free_memory(char **word) {
     for (int i = 0; word[i] != NULL; i++) {
@@ -38,7 +38,7 @@ int main() {
     signal(SIGINT, INThandler);
     setlocale(LC_ALL, ".utf8");
     
-    Game game;
+    hangman game;
     game.letter = '\0';
     game.found = 0;
     game.lives = 10;
