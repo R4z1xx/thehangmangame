@@ -17,25 +17,34 @@ int choose_word() {
 
 char* generate_word() {
     // Dictionnaire de mots aléatoire
-    const char* dictionnaire[] = {"Nigot","Pedoncule","Elephant","Sniper"};
-    int taille = sizeof(dictionnaire) / sizeof(dictionnaire[0]);
+    const char* dictionnaire[] = {"nigot","pedoncule","elephant","sniper"};
+    int word_length = sizeof(dictionnaire) / sizeof(dictionnaire[0]);
 
     srand(time(NULL));  // Initialisation de l'aléatoire
-    const char* mot = dictionnaire[rand() % taille];
+    const char* mot = dictionnaire[rand() % word_length];
 
-    // Allouer dynamiquement la mémoire pour le mot choisi
-    char* final_word = (char*)malloc((strlen(mot) + 1) * sizeof(char));
+    char** final_word = (char**)malloc(2 * sizeof(char*));
     if (final_word == NULL) {
         fprintf(stderr, "Erreur d'allocation de mémoire\n");
         exit(1);
     }
-    int word_length = strlen(mot);
-    // On met les lettres du mot dans un tableau
-    for (int i = 0; i < word_length; i++) {
-        final_word[i] = mot[i];
+
+    final_word[0] = (char*)malloc((word_length + 1) * sizeof(char));
+    if (final_word[0] == NULL) {
+        fprintf(stderr, "Erreur d'allocation de mémoire\n");
+        exit(1);
     }
-    final_word[word_length] = '\0'; // Ajouter le caractère de fin de chaîne
-    strcpy(final_word, mot);
+    
+    strcpy(final_word[0], mot);
+
+    final_word[1] = (char*)malloc((word_length + 1) * sizeof(char));
+    if (final_word[1] == NULL) {
+        fprintf(stderr, "Erreur d'allocation de mémoire\n");
+        exit(1);
+    }
+    memset(final_word[1], '_', word_length);
+    final_word[0][word_length] = '\0';
+    final_word[1][word_length] = '\0';
     return final_word;
 }
 
@@ -44,18 +53,28 @@ char* user_word() {
     printf("Entrez un mot : ");
     scanf("%s", mot);
     int word_length = strlen(mot);
-    
-    // Allouer dynamiquement la mémoire pour le mot entré
-    char* final_word = (char*)malloc((word_length + 1) * sizeof(char));
+
+    char** final_word = (char**)malloc(2 * sizeof(char*));
     if (final_word == NULL) {
         fprintf(stderr, "Erreur d'allocation de mémoire\n");
         exit(1);
     }
-    strcpy(final_word, mot);
-    // On met les lettres du mot dans un tableau
-    for (int i = 0; i < word_length; i++) {
-        final_word[i] = mot[i];
+
+    final_word[0] = (char*)malloc((word_length + 1) * sizeof(char));
+    if (final_word[0] == NULL) {
+        fprintf(stderr, "Erreur d'allocation de mémoire\n");
+        exit(1);
     }
-    final_word[word_length] = '\0'; // Ajouter le caractère de fin de chaîne
+
+    strcpy(final_word[0], mot);
+
+    final_word[1] = (char*)malloc((word_length + 1) * sizeof(char));
+    if (final_word[1] == NULL) {
+        fprintf(stderr, "Erreur d'allocation de mémoire\n");
+        exit(1);
+    }
+    memset(final_word[1], '_', word_length);
+    final_word[0][word_length] = '\0';
+    final_word[1][word_length] = '\0';
     return final_word;
 }
