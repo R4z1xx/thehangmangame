@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#define MAX_WORD_LENGTH 100
-
-// Dictionnaire de mots aléatoire
-const char* dictionnaire[] = {"Nigot","Pedoncule","Elephant","Sniper"};
-int taille = sizeof(dictionnaire) / sizeof(dictionnaire[0]);
+#include <wordlist.h>
 
 int choose_word() {
     int choice;
@@ -23,24 +15,24 @@ int choose_word() {
     return choice;
 }
 
-char* generate_word()() {
+// Dictionnaire de mots aléatoire
+const char* dictionnaire[] = {"Nigot","Pedoncule","Elephant","Sniper"};
+int taille = sizeof(dictionnaire) / sizeof(dictionnaire[0]);
+
+char* generate_word() {
     srand(time(NULL));  // Initialisation de l'aléatoire
     const char* mot = dictionnaire[rand() % taille];
-
     // Allouer dynamiquement la mémoire pour le mot choisi
     char* final_word = (char*)malloc((strlen(mot) + 1) * sizeof(char));
-
     if (final_word == NULL) {
         fprintf(stderr, "Erreur d'allocation de mémoire\n");
         exit(1);
     }
-
     int word_length = strlen(mot);
-
+    // On met les lettres du mot dans un tableau
     for (int i = 0; i < word_length; i++) {
         final_word[i] = mot[i];
     }
-    
     final_word[word_length] = '\0'; // Ajouter le caractère de fin de chaîne
     strcpy(final_word, mot);
     return final_word;
@@ -51,7 +43,6 @@ char* user_word() {
     printf("Entrez un mot : ");
     scanf("%s", mot);
     int word_length = strlen(mot);
-
     // Allouer dynamiquement la mémoire pour le mot entré
     char* final_word = (char*)malloc((word_length + 1) * sizeof(char));
     if (final_word == NULL) {
