@@ -17,7 +17,6 @@ char *hangman_ascii[] = {
 
 // Function to print the hangman ASCII art
 void print_hangman(int index) {
-    system(CLEAR_SCREEN);
     if (index >= 0 && index < 11) {
         printf("%s\n", hangman_ascii[index]);
     } else {

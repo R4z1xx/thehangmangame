@@ -6,6 +6,7 @@
 #include <string.h>
 #include <time.h>
 #include <locale.h>
+#include <ctype.h>
 
 #ifdef WIN32
     #define CLEAR_SCREEN "cls"

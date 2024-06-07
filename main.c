@@ -1,6 +1,50 @@
 #include "main.h"
 
-// Demande si mot aléatoire ou mot choisi
+int check_letter(char letter) {
+    if (isalpha(letter) == 0) {
+        return 1;
+    }
+    return 0;
+}
+
+void choose_letter(char *letter, char *word, int *found, int *lives) {
+    scanf(" %c", letter);
+    if (check_letter(*letter) == 1) {
+        printf("Erreur : veuillez entrer une lettre.\n");
+    } else {
+        (*lives)--;
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, ".utf8");
+    char **word;
+    char letter;
+    int found = 0;
+    int lives = 10;
+
+    int choice = choose_word();
+    if (choice == 1) {
+        word = generate_word();
+    } else if (choice == 2) {
+        word = user_word();
+    } else {
+        printf("Erreur : veuillez entrer 1 ou 2.\n");
+        return 1;
+    }
+
+    while (found != 1) {
+        system(CLEAR_SCREEN);
+        print_hangman(lives);
+        print_game_state(lives, letter, *word);
+        choose_letter(&letter, *word, &found, &lives);
+    }
+
+    free(word);
+    return 0;
+}
+
+
 
 // Affichage du message + les barres du mot à trouver
 
@@ -15,21 +59,3 @@
 
 // Vérification du mot
 // Si mot trouvé, affichage du mot et message de victoire
-
-
-int main() {
-    setlocale(LC_ALL, ".utf8");
-    int i;
-    printf("Vie(s): ");
-    scanf("%d", &i);
-
-    // int lives = 5;
-    char last_guess = 'a';
-    const char *word = "g o o d    l u _ k";
-
-    // Call the function to print the game state
-    print_hangman(i);
-    print_game_state(i, last_guess, word);
-
-    return 0;
-}
