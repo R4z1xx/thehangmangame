@@ -1,4 +1,4 @@
-#include <wordlist.h>
+#include "../main.h"
 
 int choose_word() {
     int choice;
