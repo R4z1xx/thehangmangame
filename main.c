@@ -64,9 +64,10 @@ int main() {
         printf("\n   Vous avez trouvé !\n");
         printf("   Le mot était : %s\n", word[0]);
     }
-    
+
     if (word != NULL) {
         free_memory(word);
+        word = NULL;
     }
     return 0;
 }

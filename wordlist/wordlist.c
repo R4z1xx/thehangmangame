@@ -35,7 +35,7 @@ char** generate_word() {
         fprintf(stderr, "Erreur d'allocation de mémoire\n");
         exit(1);
     }
-    
+
     strcpy(final_word[0], mot);
 
     final_word[1] = (char*)malloc((word_length + 1) * sizeof(char));
@@ -55,7 +55,7 @@ char** user_word() {
     scanf("%s", mot);
     int word_length = strlen(mot);
 
-    char** final_word = (char**)malloc(2 * sizeof(char*));
+    char** final_word = (char**)malloc(3 * sizeof(char*));
     if (final_word == NULL) {
         fprintf(stderr, "Erreur d'allocation de mémoire\n");
         exit(1);
@@ -77,5 +77,8 @@ char** user_word() {
     memset(final_word[1], '_', word_length);
     final_word[0][word_length] = '\0';
     final_word[1][word_length] = '\0';
+
+    final_word[2] = NULL;
+
     return final_word;
 }
