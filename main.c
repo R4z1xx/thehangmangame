@@ -67,6 +67,7 @@ int main() {
     
     system(CLEAR_SCREEN);
     if (game.lives <= 0) {
+        print_hangman(game.lives);
         printf("\n   Vous avez perdu !\n");
         printf("   Le mot était : %s\n", game.word[0]);
     } else if (game.found == 1) {
