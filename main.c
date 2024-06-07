@@ -14,7 +14,22 @@ void choose_letter(char *letter) {
     }
 }
 
+void INThandler(int sig) {
+    char exit_char;
+    signal(sig, SIG_IGN);
+    printf("\nOUCH, did you hit Ctrl-C?\n"
+        "Do you really want to quit? [y/n] ");
+    scanf(" %c", &exit_char);
+    if (exit_char == 'y' || exit_char == 'Y'){
+        printf("Exiting...\n");
+        exit(0);
+    } else {
+        signal(SIGINT, INThandler);
+    }
+}
+
 int main() {
+    signal(SIGINT, INThandler);
     setlocale(LC_ALL, ".utf8");
     char **word;
     char letter;
@@ -42,8 +57,9 @@ int main() {
             break;
         }
     }
-    printf("Vous avez trouvé !\n");
-    printf("Le mot était : %s\n", word[0]);
+    system(CLEAR_SCREEN);
+    printf("\n   Vous avez trouvé !\n");
+    printf("   Le mot était : %s\n", word[0]);
 
     for (int i = 0; word[i] != NULL; i++) {
         free(word[i]);

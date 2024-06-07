@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include <stdio.h>
+#include <signal.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -15,6 +16,8 @@
 #endif
 
 #define MAX_WORD_LENGTH 100
+
+void INThandler(int);
 
 int choose_word();
 char** user_word();
