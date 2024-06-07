@@ -7,12 +7,10 @@ int check_letter(char letter) {
     return 0;
 }
 
-void choose_letter(char *letter, char *word, int *found, int *lives) {
+void choose_letter(char *letter) {
     scanf(" %c", letter);
     if (check_letter(*letter) == 1) {
         printf("Erreur : veuillez entrer une lettre.\n");
-    } else {
-        (*lives)--;
     }
 }
 
@@ -36,8 +34,8 @@ int main() {
     while (found != 1) {
         // system(CLEAR_SCREEN);
         print_hangman(lives);
-        print_game_state(lives, letter, word);
-        choose_letter(&letter, *word, &found, &lives);
+        print_game_state(&lives, letter, word);
+        choose_letter(&letter);
     }
     printf("Vous avez trouvé gagné !\n");
 
