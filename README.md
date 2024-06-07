@@ -3,7 +3,7 @@ Il s'agit d'une implémentation du jeu du pendu en C pour notre cours sur le lan
 
 ## Comment on joue ?
 1. Clonez le repo sur votre machine.
-2. Compilez le code source à l'aide d'un compilateur (ex. gcc).
+2. Compilez le code source à l'aide du Makefile (make build ou make all).
 3. Lancez l'exécutable compilé.
 4. Suivez les instructions pour jouer.
 
