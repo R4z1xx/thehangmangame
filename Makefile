@@ -23,4 +23,4 @@ clean:
 	$(RM) $(EXE)
 
 check:
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes $(EXE)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(EXE)

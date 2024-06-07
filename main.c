@@ -1,5 +1,12 @@
 #include "main.h"
 
+void free_memory(char **word) {
+    for (int i = 0; word[i] != NULL; i++) {
+        free(word[i]);
+    }
+    free(word);
+}
+
 int check_letter(char letter) {
     if (isalpha(letter) == 0) {
         return 1;
@@ -24,7 +31,7 @@ int main() {
     signal(SIGINT, INThandler);
     setlocale(LC_ALL, ".utf8");
     char **word;
-    char letter;
+    char letter = '\0';
     int found = 0;
     int lives = 10;
 
@@ -38,7 +45,7 @@ int main() {
         return 1;
     }
 
-    while (found == 0) {
+    while (lives > 0 && found == 0) {
         system(CLEAR_SCREEN);
         print_hangman(lives);
         print_game_state(&lives, letter, word);
@@ -50,12 +57,14 @@ int main() {
         }
     }
     system(CLEAR_SCREEN);
-    printf("\n   Vous avez trouvé !\n");
-    printf("   Le mot était : %s\n", word[0]);
-
-    for (int i = 0; word[i] != NULL; i++) {
-        free(word[i]);
+    if (lives <= 0) {
+        printf("\n   Vous avez perdu !\n");
+        printf("   Le mot était : %s\n", word[0]);
+    } else if (found == 1) {
+        printf("\n   Vous avez trouvé !\n");
+        printf("   Le mot était : %s\n", word[0]);
     }
-    free(word);
+    
+    free_memory(word);
     return 0;
 }
