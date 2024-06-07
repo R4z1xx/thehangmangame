@@ -31,13 +31,19 @@ int main() {
         return 1;
     }
 
-    while (found != 1) {
-        // system(CLEAR_SCREEN);
+    while (found == 0) {
+        system(CLEAR_SCREEN);
         print_hangman(lives);
         print_game_state(&lives, letter, word);
         choose_letter(&letter);
+        check_word(&lives, word, letter);
+        if (strcmp(word[0], word[1]) == 0) {
+            found = 1;
+            break;
+        }
     }
-    printf("Vous avez trouvé gagné !\n");
+    printf("Vous avez trouvé !\n");
+    printf("Le mot était : %s\n", word[0]);
 
     for (int i = 0; word[i] != NULL; i++) {
         free(word[i]);
@@ -45,19 +51,3 @@ int main() {
     free(word);
     return 0;
 }
-
-
-
-// Affichage du message + les barres du mot à trouver
-
-// Demande de saisir d'une lettre + vérification de la lettre
-
-// Si lettre trouvée, affichage de la lettre dans le mot
-// Si lettre non trouvée, affichage du pendu
-
-// Ajout de la lettre dans le tableau des lettres déjà jouées
-
-// Vérification du pendu
-
-// Vérification du mot
-// Si mot trouvé, affichage du mot et message de victoire
