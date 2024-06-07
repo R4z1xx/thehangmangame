@@ -1,5 +1,4 @@
-#include <stdio.h>
-# include "hangman_ascii.h"
+#include "../main.h"
 
 // Define the hangman ASCII art
 char *hangman_ascii[] = {

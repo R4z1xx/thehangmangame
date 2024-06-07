@@ -15,6 +15,7 @@ int choose_word() {
     return choice;
 }
 
+char* generate_word() {
 // Dictionnaire de mots aléatoire
 const char* dictionnaire[] = {"Nigot","Pedoncule","Elephant","Sniper"};
 int taille = sizeof(dictionnaire) / sizeof(dictionnaire[0]);

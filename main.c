@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include "ascii/hangman_ascii.h"
-#include <locale.h> // Inclure ce fichier d'en-tête pour définir LC_ALL
+#include "main.h"
 
 // Demande si mot aléatoire ou mot choisi
 
@@ -20,14 +18,21 @@
 
 
 int main() {
-    setlocale(LC_ALL, ".utf8"); // Configure l'environnement pour utiliser l'encodage UTF-8
-    // Tester les accents
-    printf("éàèçù\n");
-    int id = 0;
-    while (id < 10) {
-        print_hangman(id);
-        id++;
-    }
+    setlocale(LC_ALL, ".utf8");
+
+    // int id = 0;
+
+    int lives = 5;
+    char last_guess = 'a';
+    const char *word = "g o o d    l u _ k";
+
+    // Call the function to print the game state
+    print_game_state(lives, last_guess, word);
+
+    // while (id < 10) {
+    //     print_hangman(id);
+    //     id++;
+    // }
 
     return 0;
 }
