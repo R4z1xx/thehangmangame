@@ -1,4 +1,5 @@
 #include <stdio.h>
+# include "hangman_ascii.h"
 
 // Define the hangman ASCII art
 char *hangman_ascii[] = {
@@ -21,14 +22,4 @@ void print_hangman(int index) {
     } else {
         printf("Invalid index\n");
     }
-}
-
-int main() {
-    int id = 0;
-    while (id < 10) {
-        print_hangman(id);
-        id++;
-    }
-
-    return 0;
 }
