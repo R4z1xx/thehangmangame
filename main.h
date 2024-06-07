@@ -22,6 +22,6 @@ char** generate_word();
 
 void print_hangman(int index);
 
-void print_game_state(int lives, char last_guess, const char *word);
+void print_game_state(int lives, char last_guess, char **word);
 
 #endif

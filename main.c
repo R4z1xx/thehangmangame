@@ -34,12 +34,16 @@ int main() {
     }
 
     while (found != 1) {
-        system(CLEAR_SCREEN);
+        // system(CLEAR_SCREEN);
         print_hangman(lives);
-        print_game_state(lives, letter, *word);
+        print_game_state(lives, letter, word);
         choose_letter(&letter, *word, &found, &lives);
     }
+    printf("Vous avez trouvé gagné !\n");
 
+    for (int i = 0; word[i] != NULL; i++) {
+        free(word[i]);
+    }
     free(word);
     return 0;
 }
