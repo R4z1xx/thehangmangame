@@ -12,11 +12,13 @@ endif
 
 help:
 	@echo ---------------- help ----------------
-	@echo make all   : build hangman
+	@echo make all   : clean, build and check hangman
+	@echo make build : build hangman
 	@echo make clean : clean hangman build files
 	@echo make check : check for memory leaks
+	@echo --------------------------------------
 
-all:
+build:
 	$(CC) $(CFLAGS) main.c $(MODULES) -o $(EXE)
 
 clean:
@@ -24,3 +26,5 @@ clean:
 
 check:
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(EXE)
+
+all: clean build check
