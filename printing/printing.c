@@ -16,6 +16,10 @@ void check_word(int *lives, char **word, char last_guess) {
 
 void print_game_state(int *lives, char last_guess, char **word) {
     printf("\n   Vie(s) : %d       Dernière réponse : %c\n\n", *lives, last_guess);
-    printf("   %s\n\n", word[1]);
+    printf("   ");
+    for (int i = 0; word[1][i] != '\0'; i++) {
+        printf("%c ", word[1][i]);
+    }
+    printf("\n\n");
     printf("   Saisissez une lettre, puis appuyez sur [Entrée] : ");
 }

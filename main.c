@@ -1,5 +1,12 @@
 #include "main.h"
 
+typedef struct {
+    char **word;
+    char letter;
+    int found;
+    int lives;
+} Game;
+
 void free_memory(char **word) {
     for (int i = 0; word[i] != NULL; i++) {
         free(word[i]);
@@ -30,44 +37,46 @@ void INThandler(int sig) {
 int main() {
     signal(SIGINT, INThandler);
     setlocale(LC_ALL, ".utf8");
-    char **word;
-    char letter = '\0';
-    int found = 0;
-    int lives = 10;
+    
+    Game game;
+    game.letter = '\0';
+    game.found = 0;
+    game.lives = 10;
 
     int choice = choose_word();
     if (choice == 1) {
-        word = generate_word();
+        game.word = generate_word();
     } else if (choice == 2) {
-        word = user_word();
+        game.word = user_word();
     } else {
         printf("Erreur : veuillez entrer 1 ou 2.\n");
         return 1;
     }
 
-    while (lives > 0 && found == 0) {
+    while (game.lives > 0 && game.found == 0) {
         system(CLEAR_SCREEN);
-        print_hangman(lives);
-        print_game_state(&lives, letter, word);
-        choose_letter(&letter);
-        check_word(&lives, word, letter);
-        if (strcmp(word[0], word[1]) == 0) {
-            found = 1;
+        print_hangman(game.lives);
+        print_game_state(&game.lives, game.letter, game.word);
+        choose_letter(&game.letter);
+        check_word(&game.lives, game.word, game.letter);
+        if (strcmp(game.word[0], game.word[1]) == 0) {
+            game.found = 1;
             break;
         }
     }
+    
     system(CLEAR_SCREEN);
-    if (lives <= 0) {
+    if (game.lives <= 0) {
         printf("\n   Vous avez perdu !\n");
-        printf("   Le mot était : %s\n", word[0]);
-    } else if (found == 1) {
+        printf("   Le mot était : %s\n", game.word[0]);
+    } else if (game.found == 1) {
         printf("\n   Vous avez trouvé !\n");
-        printf("   Le mot était : %s\n", word[0]);
+        printf("   Le mot était : %s\n", game.word[0]);
     }
 
-    if (word != NULL) {
-        free_memory(word);
-        word = NULL;
+    if (game.word != NULL) {
+        free_memory(game.word);
+        game.word = NULL;
     }
     return 0;
 }
