@@ -15,15 +15,12 @@
 
 #define MAX_WORD_LENGTH 100
 
-// Define the hangman ASCII art
+int choose_word();
+char** user_word();
+char** generate_word();
+
 void print_hangman(int index);
 
-// Function to print the game state
 void print_game_state(int lives, char last_guess, const char *word);
-
-int choose_word();
-char* user_word();
-char* generate_word();
-
 
 #endif

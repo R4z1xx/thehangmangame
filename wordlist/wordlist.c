@@ -15,7 +15,7 @@ int choose_word() {
     return choice;
 }
 
-char* generate_word() {
+char** generate_word() {
     // Dictionnaire de mots aléatoire
     const char* dictionnaire[] = {"nigot","pedoncule","elephant","sniper"};
     int word_length = sizeof(dictionnaire) / sizeof(dictionnaire[0]);
@@ -48,7 +48,7 @@ char* generate_word() {
     return final_word;
 }
 
-char* user_word() {
+char** user_word() {
     char mot[MAX_WORD_LENGTH];
     printf("Entrez un mot : ");
     scanf("%s", mot);
