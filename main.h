@@ -21,4 +21,9 @@ void print_hangman(int index);
 // Function to print the game state
 void print_game_state(int lives, char last_guess, const char *word);
 
+int choose_word();
+char* user_word();
+char* generate_word();
+
+
 #endif

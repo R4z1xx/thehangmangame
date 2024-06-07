@@ -16,13 +16,13 @@ int choose_word() {
 }
 
 char* generate_word() {
-// Dictionnaire de mots aléatoire
-const char* dictionnaire[] = {"Nigot","Pedoncule","Elephant","Sniper"};
-int taille = sizeof(dictionnaire) / sizeof(dictionnaire[0]);
+    // Dictionnaire de mots aléatoire
+    const char* dictionnaire[] = {"Nigot","Pedoncule","Elephant","Sniper"};
+    int taille = sizeof(dictionnaire) / sizeof(dictionnaire[0]);
 
-char* generate_word() {
     srand(time(NULL));  // Initialisation de l'aléatoire
     const char* mot = dictionnaire[rand() % taille];
+
     // Allouer dynamiquement la mémoire pour le mot choisi
     char* final_word = (char*)malloc((strlen(mot) + 1) * sizeof(char));
     if (final_word == NULL) {
@@ -44,6 +44,7 @@ char* user_word() {
     printf("Entrez un mot : ");
     scanf("%s", mot);
     int word_length = strlen(mot);
+    
     // Allouer dynamiquement la mémoire pour le mot entré
     char* final_word = (char*)malloc((word_length + 1) * sizeof(char));
     if (final_word == NULL) {
