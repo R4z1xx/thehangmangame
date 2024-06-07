@@ -18,10 +18,11 @@ int choose_word() {
 char** generate_word() {
     // Dictionnaire de mots aléatoire
     const char* dictionnaire[] = {"nigot","pedoncule","elephant","sniper"};
-    int word_length = sizeof(dictionnaire) / sizeof(dictionnaire[0]);
+    int size = sizeof(dictionnaire) / sizeof(dictionnaire[0]);
 
     srand(time(NULL));  // Initialisation de l'aléatoire
-    const char* mot = dictionnaire[rand() % word_length];
+    const char* mot = dictionnaire[rand() % size];
+    int word_length = strlen(mot);
 
     char** final_word = (char**)malloc(2 * sizeof(char*));
     if (final_word == NULL) {
