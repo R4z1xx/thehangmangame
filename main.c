@@ -15,17 +15,9 @@ void choose_letter(char *letter) {
 }
 
 void INThandler(int sig) {
-    char exit_char;
     signal(sig, SIG_IGN);
-    printf("\nOUCH, did you hit Ctrl-C?\n"
-        "Do you really want to quit? [y/n] ");
-    scanf(" %c", &exit_char);
-    if (exit_char == 'y' || exit_char == 'Y'){
-        printf("Exiting...\n");
-        exit(0);
-    } else {
-        signal(SIGINT, INThandler);
-    }
+    printf("\n\n   Exiting...\n");
+    exit(0);
 }
 
 int main() {

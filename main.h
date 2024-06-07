@@ -2,12 +2,12 @@
 #define MAIN_H
 
 #include <stdio.h>
-#include <signal.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <locale.h>
 #include <ctype.h>
+#include <signal.h>
 
 #ifdef WIN32
     #define CLEAR_SCREEN "cls"
@@ -16,8 +16,6 @@
 #endif
 
 #define MAX_WORD_LENGTH 100
-
-void INThandler(int);
 
 int choose_word();
 char** user_word();
