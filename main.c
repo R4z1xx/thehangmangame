@@ -1,12 +1,5 @@
 #include "main.h"
 
-typedef struct {
-    char **word;
-    char letter;
-    int found;
-    int lives;
-} hangman;
-
 void free_memory(char **word) {
     for (int i = 0; word[i] != NULL; i++) {
         free(word[i]);

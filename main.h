@@ -17,13 +17,25 @@
 
 #define MAX_WORD_LENGTH 100
 
-int choose_word();
-char** user_word();
-char** generate_word();
+typedef struct {
+    char **word;
+    char letter;
+    int found;
+    int lives;
+} hangman;
+
+void free_memory(char **word);
+int check_letter(char letter);
+void choose_letter(char *letter);
+void INThandler(int sig);
 
 void print_hangman(int index);
 
 void check_word(int *lives, char **word, char last_guess);
 void print_game_state(int *lives, char last_guess, char **word);
+
+int choose_word();
+char** user_word();
+char** generate_word();
 
 #endif
